@@ -1,0 +1,86 @@
+{% extends 'cart/header.html' %}
+{% block title %}Myorders | Cart{% endblock %}
+{% block body %}
+{% endblock %}
+{% block content %}
+<div class="container my-3">
+    <article class="card">
+        <header class="card-header"> My Orders / Tracking </header>
+        <div class="card-body" id="orderDetails">
+        </div>
+    </article>
+    {% for i in prodPlace %}
+    <input type="hidden" name="" id="order{{forloop.counter}}" value="{{i.items_json}}">
+    <input type="hidden" name="" id="gt{{forloop.counter}}" value="{{i.items_total}}">
+    <input type="hidden" name="" id="eid{{forloop.counter}}" value="{{i.email}}">
+    {% endfor %}
+</div>
+<script>
+
+    console.log('{{op}}');
+
+    if ('{{op}}' == "Order_Placed") {
+        alert("Thanks for ordering with us. Your order id is {{id}}. Use it to track your order using our order tracker")
+        localStorage.removeItem("cart");
+    }
+
+    document.getElementById("HomePage").classList.add("active");
+
+    function myFunction() {
+        location.href = localStorage.getItem('homeLink');
+    }
+
+    for (let i = 0; i < '{{noOrder}}'; i++) {
+
+        data = JSON.parse(document.getElementById("order" + (i + 1)).value);
+
+        gt = document.getElementById("gt" + (i + 1)).value;
+
+        eid = document.getElementById("eid" + (i + 1)).value;
+
+        currentUid = localStorage.getItem('CurrentUserId');
+
+        Oids = JSON.parse('{{Oid|escapejs}}');
+
+        myStr = `
+            <article class="card bg-dark text-light">
+                <div class="card-body row">
+                    <div class="col"> <strong>Order ID:</strong> <br>OD${Oids[i]}</div>
+                    <div class="col"> <strong>Estimated Delivery:</strong> <br>29 nov 2019 </div>
+                    <div class="col"> <strong>Shipping BY:</strong> <br> Droppers | <i class="fa fa-phone"></i>
+                        +917999456558 </div>
+                    <div class="col"> <strong>Status:</strong> <br> Picked Up </div>
+                </div>
+            </article>
+            
+            <hr>
+
+            <ul class="row" id="orderDetails">`;
+
+        for (let j = 0; j < Object.keys(data).length; j++) {
+            myStr += `<li class="col-md-4">
+                    <figure class="itemside mb-3">
+                        <div class="aside"><img src=${data[j][4]} class="img-sm border"></div>
+                        <figcaption class="info align-self-center">
+                            <p class="title">${data[j][1]} <br> Qty. ${data[j][0]}</p> <span
+                                class="text-muted">&#8377 ${data[j][2]} </span>
+                        </figcaption>
+                    </figure>
+                </li>`
+        }
+
+        myStr += `</ul>
+        <hr> <a class="btn btn-warning text-light" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to
+                orders</a>
+                <a class="btn btn-dark float-right text-light" data-abc="true"> <i class="fas fa-rupee-sign"></i> ${gt}</a>
+                <hr><br><br>`;
+
+        if(currentUid==eid){
+            $('#orderDetails').append(myStr);
+        }
+
+        console.log(eid)
+    }
+
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'cart/header.html' %}
+{% block title %}Checkout | Cart{% endblock %}
+{% block body %}
+<h1>This is Checkout page of Cart...</h1>
+{% endblock %}
+{% block content %}
+{{op}}
+<h4>content of Checkout page of Cart...</h4>
+<script>
+
+    function myFunction() {
+        location.href = localStorage.getItem('homeLink');
+    }
+    
+    console.log('{{op}}');
+
+    if ('{{op}}' == "Order_Placed") {
+        alert("Thanks for ordering with us. Your order id is {{id}}. Use it to track your order using our order tracker")
+        localStorage.removeItem("cart");
+    }
+
+</script>
+{% endblock %}

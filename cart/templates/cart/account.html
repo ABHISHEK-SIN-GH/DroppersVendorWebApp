@@ -1,0 +1,14 @@
+{% extends 'cart/header.html' %}
+{% block title %}Account | Cart{% endblock %}
+{% block body %}
+<h1>This is Account page of Cart...</h1>
+{% endblock %}
+{% block content %}
+<h4>content of Account page of Cart...</h4>
+<script>
+    function myFunction() {
+        location.href = localStorage.getItem('homeLink');
+    }
+</script>
+{% endblock %}
+  

@@ -1,0 +1,14 @@
+{% extends 'cart/header.html' %}
+{% block title %}Login | Cart{% endblock %}
+{% block body %}
+<h1>This is Login page of Cart...</h1>
+{% endblock %}
+{% block content %}
+<h4>content of Login page of Cart...</h4>
+<script>
+    function myFunction() {
+        location.href = localStorage.getItem('homeLink');
+    }
+</script>
+{% endblock %}
+  

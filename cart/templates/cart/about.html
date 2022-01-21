@@ -1,0 +1,81 @@
+{% extends 'cart/header.html' %}
+{% block title %}About | Cart{% endblock %}
+{% block body %}
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container-fluid">
+
+    <div class="text-center m-2 container-fluid p-3" style="overflow-x: hidden;">
+        <h1 class="display-5 ">About Us</h1>
+        <h2 class="fs-5 px-5 mt-3 fw-normal fst-italic">
+            <p>Droppers provide the On-demand Delivery service in the region of Bhilai-Durg.</p>
+            <p> Our aim is to optimize all the local logistics movement,</p>
+            <p> To enhance the productivity at local business to customer supply chain.</p>
+        </h2>
+    </div>
+    <hr class="my-3 mx-4">
+    <div class="row m-2 mb-0 text-center container-fluid" style="overflow-x: hidden;">
+        <h2 style="text-align:center" class="mb-3 display-5">Our Team</h2>
+        <div class="col mb-4">
+            <div class="card ">
+                <img src="{% static 'cart/me.jpg' %}" alt="Jane" style="width:100%">
+                <div class="container p-3">
+                    <h2>Jane Doe</h2>
+                    <p class="title">CEO & Founder</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>jane@example.com</p>
+                    <p><button class="btn btn-warning mt-2">Contact</button></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col mb-4">
+            <div class="card ">
+                <img src="{% static 'cart/me.jpg' %}" alt="Mike" style="width:100%">
+                <div class="container p-3">
+                    <h2>Mike Ross</h2>
+                    <p class="title">Art Director</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>mike@example.com</p>
+                    <p><button class="btn btn-warning mt-2">Contact</button></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col mb-4">
+            <div class="card">
+                <img src="{% static 'cart/me.jpg' %}" alt="John" style="width:100%">
+                <div class="container  p-3">
+                    <h2>John Doe</h2>
+                    <p class="title">Designer</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>john@example.com</p>
+                    <p><button class="btn btn-warning mt-2">Contact</button></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col">
+            <div class="card">
+                <img src="{% static 'cart/me.jpg' %}" alt="John" style="width:100%">
+                <div class="container p-3">
+                    <h2>John Doe</h2>
+                    <p class="title">Designer and Developer</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>john@example.com</p>
+                    <p><button class="btn btn-warning mt-2">Contact</button></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    document.getElementById("AboutPage").classList.add("active");
+    function myFunction() {
+        location.href = localStorage.getItem('homeLink');
+    }
+</script>
+{% endblock %}
